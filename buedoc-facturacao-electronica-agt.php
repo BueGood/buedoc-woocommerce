@@ -8,10 +8,10 @@
  * Author URI:        https://buegood.com
  * License:           GPLv2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       buedoc-facturacao-eletronica-agt
+ * Text Domain:       buedoc-facturacao-electronica-agt
  * Domain Path:       /languages
  * Requires at least: 6.0
- * Tested up to:      6.7
+ * Tested up to:      7.1
  * Requires PHP:      7.4
  * WC requires at least: 8.0
  * WC tested up to:   9.5
@@ -141,13 +141,13 @@ class BueDoc_WooCommerce {
         $settings_link = sprintf(
             '<a href="%s">%s</a>',
             admin_url('admin.php?page=wc-settings&tab=buedoc'),
-            __('Definições', 'buedoc-woocommerce')
+            __('Definições', 'buedoc-facturacao-electronica-agt')
         );
 
         $docs_link = sprintf(
             '<a href="%s" target="_blank" rel="noopener noreferrer">%s</a>',
             'https://doc.buegood.com/api/docs',
-            __('Documentação', 'buedoc-woocommerce')
+            __('Documentação', 'buedoc-facturacao-electronica-agt')
         );
 
         array_unshift($links, $settings_link);
@@ -162,8 +162,8 @@ class BueDoc_WooCommerce {
     public function register_admin_menu() {
         add_submenu_page(
             'woocommerce',
-            __('BueDoc Facturação', 'buedoc-woocommerce'),
-            __('BueDoc Facturação', 'buedoc-woocommerce'),
+            __('BueDoc Facturação', 'buedoc-facturacao-electronica-agt'),
+            __('BueDoc Facturação', 'buedoc-facturacao-electronica-agt'),
             'manage_woocommerce',
             'admin.php?page=wc-settings&tab=buedoc'
         );

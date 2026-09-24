@@ -50,7 +50,7 @@ class BueDoc_My_Account {
 
         $actions['buedoc_pdf'] = [
             'url'  => $download_url,
-            'name' => __('Factura PDF', 'buedoc-woocommerce'),
+            'name' => __('Factura PDF', 'buedoc-facturacao-electronica-agt'),
         ];
 
         return $actions;
@@ -89,12 +89,12 @@ class BueDoc_My_Account {
         <div class="buedoc-myaccount-invoice-card" style="margin: 28px 0; padding: 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
             <div class="buedoc-myaccount-invoice-info" style="margin-bottom: 12px;">
                 <h3 style="margin-top: 0; margin-bottom: 6px; font-size: 16px; color: #0f172a;">
-                    <?php esc_html_e('Documento Fiscal Certificado (AGT)', 'buedoc-woocommerce'); ?>
+                    <?php esc_html_e('Documento Fiscal Certificado (AGT)', 'buedoc-facturacao-electronica-agt'); ?>
                 </h3>
                 <p style="margin: 0; color: #475569; font-size: 13px;">
                     <?php
                     printf(
-                        esc_html__('Documento emitido: %1$s %2$s', 'buedoc-woocommerce'),
+                        esc_html__('Documento emitido: %1$s %2$s', 'buedoc-facturacao-electronica-agt'),
                         esc_html($doc_type === 'FR' ? 'Factura-Recibo' : 'Factura'),
                         '<strong>' . esc_html($doc_number) . '</strong>'
                     );
@@ -110,7 +110,7 @@ class BueDoc_My_Account {
 
             <div>
                 <a href="<?php echo esc_url($download_url); ?>" target="_blank" class="button" style="display: inline-block;">
-                    <?php esc_html_e('Descarregar Factura (PDF)', 'buedoc-woocommerce'); ?>
+                    <?php esc_html_e('Descarregar Factura (PDF)', 'buedoc-facturacao-electronica-agt'); ?>
                 </a>
             </div>
         </div>

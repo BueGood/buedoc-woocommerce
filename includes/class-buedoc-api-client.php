@@ -321,7 +321,7 @@ class BueDoc_API_Client {
 
         if (function_exists('wc_get_logger')) {
             $logger = wc_get_logger();
-            $log_context = ['source' => 'buedoc-woocommerce'];
+            $log_context = ['source' => 'buedoc-facturacao-electronica-agt'];
             if (!empty($context)) {
                 $message .= ' | Dados: ' . wp_json_encode($context);
             }

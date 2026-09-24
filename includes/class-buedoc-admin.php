@@ -103,7 +103,7 @@ class BueDoc_Admin {
 
         add_meta_box(
             'buedoc_order_invoice',
-            __('Factura BueDoc (AGT)', 'buedoc-woocommerce'),
+            __('Factura BueDoc (AGT)', 'buedoc-facturacao-electronica-agt'),
             [$this, 'render_order_meta_box'],
             $order_screen,
             'side',
@@ -119,7 +119,7 @@ class BueDoc_Admin {
     public function render_order_meta_box($post_or_order) {
         $order = ($post_or_order instanceof WC_Order) ? $post_or_order : wc_get_order($post_or_order->ID);
         if (!$order) {
-            echo '<p>' . esc_html__('Encomenda não encontrada.', 'buedoc-woocommerce') . '</p>';
+            echo '<p>' . esc_html__('Encomenda não encontrada.', 'buedoc-facturacao-electronica-agt') . '</p>';
             return;
         }
 
@@ -158,11 +158,11 @@ class BueDoc_Admin {
         foreach ($columns as $key => $title) {
             $new_columns[$key] = $title;
             if ($key === 'order_status' || $key === 'order_number') {
-                $new_columns['buedoc_invoice'] = __('Factura BueDoc', 'buedoc-woocommerce');
+                $new_columns['buedoc_invoice'] = __('Factura BueDoc', 'buedoc-facturacao-electronica-agt');
             }
         }
         if (!isset($new_columns['buedoc_invoice'])) {
-            $new_columns['buedoc_invoice'] = __('Factura BueDoc', 'buedoc-woocommerce');
+            $new_columns['buedoc_invoice'] = __('Factura BueDoc', 'buedoc-facturacao-electronica-agt');
         }
         return $new_columns;
     }
@@ -213,7 +213,7 @@ class BueDoc_Admin {
                 'nonce'    => wp_create_nonce('buedoc_download_pdf_' . $order_id),
             ], admin_url('admin-post.php'));
 
-            echo '<a href="' . esc_url($download_url) . '" target="_blank" class="buedoc-badge buedoc-badge-doc-' . esc_attr(strtolower($doc_type)) . '" title="' . esc_attr__('Descarregar PDF', 'buedoc-woocommerce') . '">';
+            echo '<a href="' . esc_url($download_url) . '" target="_blank" class="buedoc-badge buedoc-badge-doc-' . esc_attr(strtolower($doc_type)) . '" title="' . esc_attr__('Descarregar PDF', 'buedoc-facturacao-electronica-agt') . '">';
             echo esc_html($doc_number);
             echo '</a>';
 
@@ -232,7 +232,7 @@ class BueDoc_Admin {
      * @return array
      */
     public function register_bulk_actions($actions) {
-        $actions['buedoc_bulk_issue'] = __('Emitir Facturas no BueDoc', 'buedoc-woocommerce');
+        $actions['buedoc_bulk_issue'] = __('Emitir Facturas no BueDoc', 'buedoc-facturacao-electronica-agt');
         return $actions;
     }
 
@@ -291,14 +291,14 @@ class BueDoc_Admin {
             if ($emitted > 0) {
                 printf(
                     '<div class="notice notice-success is-dismissible"><p>%s</p></div>',
-                    esc_html(sprintf(_n('%d factura BueDoc emitida com sucesso.', '%d facturas BueDoc emitidas com sucesso.', $emitted, 'buedoc-woocommerce'), $emitted))
+                    esc_html(sprintf(_n('%d factura BueDoc emitida com sucesso.', '%d facturas BueDoc emitidas com sucesso.', $emitted, 'buedoc-facturacao-electronica-agt'), $emitted))
                 );
             }
 
             if ($failed > 0) {
                 printf(
                     '<div class="notice notice-warning is-dismissible"><p>%s</p></div>',
-                    esc_html(sprintf(_n('%d encomenda falhou ou já possuía factura.', '%d encomendas falharam ou já possuíam factura.', $failed, 'buedoc-woocommerce'), $failed))
+                    esc_html(sprintf(_n('%d encomenda falhou ou já possuía factura.', '%d encomendas falharam ou já possuíam factura.', $failed, 'buedoc-facturacao-electronica-agt'), $failed))
                 );
             }
         }
@@ -310,12 +310,12 @@ class BueDoc_Admin {
     public function handle_download_pdf() {
         $order_id = isset($_GET['order_id']) ? (int)$_GET['order_id'] : 0;
         if (!$order_id) {
-            wp_die(esc_html__('ID de encomenda inválido.', 'buedoc-woocommerce'));
+            wp_die(esc_html__('ID de encomenda inválido.', 'buedoc-facturacao-electronica-agt'));
         }
 
         $order = wc_get_order($order_id);
         if (!$order) {
-            wp_die(esc_html__('Encomenda não encontrada.', 'buedoc-woocommerce'));
+            wp_die(esc_html__('Encomenda não encontrada.', 'buedoc-facturacao-electronica-agt'));
         }
 
         // Validação de permissões: Admin ou o próprio cliente titular
@@ -329,21 +329,21 @@ class BueDoc_Admin {
         }
 
         if (!$can_view) {
-            wp_die(esc_html__('Acesso negado para descarregar este documento fiscal.', 'buedoc-woocommerce'), 403);
+            wp_die(esc_html__('Acesso negado para descarregar este documento fiscal.', 'buedoc-facturacao-electronica-agt'), 403);
         }
 
         $doc_id     = $order->get_meta('_buedoc_document_id');
         $doc_number = $order->get_meta('_buedoc_document_number');
 
         if (empty($doc_id)) {
-            wp_die(esc_html__('Nenhum documento fiscal BueDoc registado nesta encomenda.', 'buedoc-woocommerce'));
+            wp_die(esc_html__('Nenhum documento fiscal BueDoc registado nesta encomenda.', 'buedoc-facturacao-electronica-agt'));
         }
 
         $client = new BueDoc_API_Client();
         $pdf_res = $client->download_document_pdf($doc_id);
 
         if (!$pdf_res['success'] || empty($pdf_res['pdf_content'])) {
-            wp_die(esc_html(!empty($pdf_res['error']) ? $pdf_res['error'] : __('Falha ao descarregar o PDF do BueDoc.', 'buedoc-woocommerce')));
+            wp_die(esc_html(!empty($pdf_res['error']) ? $pdf_res['error'] : __('Falha ao descarregar o PDF do BueDoc.', 'buedoc-facturacao-electronica-agt')));
         }
 
         $filename = sanitize_file_name('Factura-' . (!empty($doc_number) ? str_replace(' ', '-', $doc_number) : $order_id) . '.pdf');
@@ -370,7 +370,7 @@ class BueDoc_Admin {
         check_ajax_referer('buedoc_admin_nonce', 'nonce');
 
         if (!current_user_can('manage_woocommerce')) {
-            wp_send_json_error(['message' => __('Sem permissões para emitir documentos.', 'buedoc-woocommerce')]);
+            wp_send_json_error(['message' => __('Sem permissões para emitir documentos.', 'buedoc-facturacao-electronica-agt')]);
         }
 
         $order_id = isset($_POST['order_id']) ? (int)$_POST['order_id'] : 0;
@@ -378,7 +378,7 @@ class BueDoc_Admin {
 
         $order = wc_get_order($order_id);
         if (!$order) {
-            wp_send_json_error(['message' => __('Encomenda não encontrada.', 'buedoc-woocommerce')]);
+            wp_send_json_error(['message' => __('Encomenda não encontrada.', 'buedoc-facturacao-electronica-agt')]);
         }
 
         $order_manager = new BueDoc_Order_Manager();
@@ -398,18 +398,18 @@ class BueDoc_Admin {
         check_ajax_referer('buedoc_admin_nonce', 'nonce');
 
         if (!current_user_can('manage_woocommerce')) {
-            wp_send_json_error(['message' => __('Sem permissões para esta acção.', 'buedoc-woocommerce')]);
+            wp_send_json_error(['message' => __('Sem permissões para esta acção.', 'buedoc-facturacao-electronica-agt')]);
         }
 
         $order_id = isset($_POST['order_id']) ? (int)$_POST['order_id'] : 0;
         $order = wc_get_order($order_id);
         if (!$order) {
-            wp_send_json_error(['message' => __('Encomenda não encontrada.', 'buedoc-woocommerce')]);
+            wp_send_json_error(['message' => __('Encomenda não encontrada.', 'buedoc-facturacao-electronica-agt')]);
         }
 
         $doc_id = $order->get_meta('_buedoc_document_id');
         if (empty($doc_id)) {
-            wp_send_json_error(['message' => __('Nenhum documento associado a esta encomenda.', 'buedoc-woocommerce')]);
+            wp_send_json_error(['message' => __('Nenhum documento associado a esta encomenda.', 'buedoc-facturacao-electronica-agt')]);
         }
 
         $client = new BueDoc_API_Client();
@@ -427,7 +427,7 @@ class BueDoc_Admin {
 
             wp_send_json_success(['agtStatus' => $doc['agtStatus']]);
         } else {
-            wp_send_json_error(['message' => !empty($res['error']) ? $res['error'] : __('Erro ao consultar documento na API BueDoc.', 'buedoc-woocommerce')]);
+            wp_send_json_error(['message' => !empty($res['error']) ? $res['error'] : __('Erro ao consultar documento na API BueDoc.', 'buedoc-facturacao-electronica-agt')]);
         }
     }
 
@@ -438,13 +438,13 @@ class BueDoc_Admin {
         check_ajax_referer('buedoc_admin_nonce', 'nonce');
 
         if (!current_user_can('manage_woocommerce')) {
-            wp_send_json_error(['message' => __('Sem permissões.', 'buedoc-woocommerce')]);
+            wp_send_json_error(['message' => __('Sem permissões.', 'buedoc-facturacao-electronica-agt')]);
         }
 
         $order_id = isset($_POST['order_id']) ? (int)$_POST['order_id'] : 0;
         $order = wc_get_order($order_id);
         if (!$order) {
-            wp_send_json_error(['message' => __('Encomenda não encontrada.', 'buedoc-woocommerce')]);
+            wp_send_json_error(['message' => __('Encomenda não encontrada.', 'buedoc-facturacao-electronica-agt')]);
         }
 
         $order_manager = new BueDoc_Order_Manager();

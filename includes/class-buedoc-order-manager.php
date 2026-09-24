@@ -62,7 +62,7 @@ class BueDoc_Order_Manager {
      */
     public function issue_invoice_for_order($order, $force_doc_type = null) {
         if (!$order instanceof WC_Order) {
-            return ['success' => false, 'error' => __('Encomenda inválida.', 'buedoc-woocommerce')];
+            return ['success' => false, 'error' => __('Encomenda inválida.', 'buedoc-facturacao-electronica-agt')];
         }
 
         $order_id = $order->get_id();
@@ -73,14 +73,14 @@ class BueDoc_Order_Manager {
             $existing_number = $order->get_meta('_buedoc_document_number');
             return [
                 'success' => false,
-                'error'   => sprintf(__('A encomenda #%1$d já possui documento emitido no BueDoc (%2$s).', 'buedoc-woocommerce'), $order_id, $existing_number),
+                'error'   => sprintf(__('A encomenda #%1$d já possui documento emitido no BueDoc (%2$s).', 'buedoc-facturacao-electronica-agt'), $order_id, $existing_number),
             ];
         }
 
         // 2. Chave de API
         $api_key = BueDoc_Settings::get_option('api_key', '');
         if (empty($api_key)) {
-            $err = __('Chave de API do BueDoc não configurada nas definições.', 'buedoc-woocommerce');
+            $err = __('Chave de API do BueDoc não configurada nas definições.', 'buedoc-facturacao-electronica-agt');
             $order->add_order_note('BueDoc: ' . $err);
             return ['success' => false, 'error' => $err];
         }
@@ -153,7 +153,7 @@ class BueDoc_Order_Manager {
         $lines = $this->build_document_lines($order);
 
         if (empty($lines)) {
-            $err = __('Não foi possível emitir documento sem linhas de produtos/serviços.', 'buedoc-woocommerce');
+            $err = __('Não foi possível emitir documento sem linhas de produtos/serviços.', 'buedoc-facturacao-electronica-agt');
             $order->add_order_note('BueDoc: ' . $err);
             return ['success' => false, 'error' => $err];
         }
@@ -181,8 +181,8 @@ class BueDoc_Order_Manager {
         $response = $client->create_document($payload);
 
         if (!$response['success']) {
-            $err_msg = !empty($response['error']) ? $response['error'] : __('Erro desconhecido retornado pela API BueDoc.', 'buedoc-woocommerce');
-            $order->add_order_note(sprintf(__('BueDoc: Falha na emissão da %1$s: %2$s', 'buedoc-woocommerce'), $doc_type, $err_msg));
+            $err_msg = !empty($response['error']) ? $response['error'] : __('Erro desconhecido retornado pela API BueDoc.', 'buedoc-facturacao-electronica-agt');
+            $order->add_order_note(sprintf(__('BueDoc: Falha na emissão da %1$s: %2$s', 'buedoc-facturacao-electronica-agt'), $doc_type, $err_msg));
             return ['success' => false, 'error' => $err_msg];
         }
 
@@ -206,7 +206,7 @@ class BueDoc_Order_Manager {
 
         // 12. Adicionar nota explicativa na encomenda
         $note = sprintf(
-            __('Documento fiscal BueDoc emitido com sucesso: %1$s (AGT Status: %2$s). Total: %3$s Kz.', 'buedoc-woocommerce'),
+            __('Documento fiscal BueDoc emitido com sucesso: %1$s (AGT Status: %2$s). Total: %3$s Kz.', 'buedoc-facturacao-electronica-agt'),
             $doc_data['number'],
             $doc_data['agtStatus'],
             number_format(isset($doc_data['totals']['gross']) ? $doc_data['totals']['gross'] : $order->get_total(), 2, ',', ' ')
@@ -303,7 +303,7 @@ class BueDoc_Order_Manager {
             $shipping_vat_rate  = (float)BueDoc_Settings::get_option('shipping_vat_rate', 14);
             $shipping_exemption = BueDoc_Settings::get_option('shipping_exemption', 'M10');
 
-            $shipping_name = __('Portes de Envio', 'buedoc-woocommerce');
+            $shipping_name = __('Portes de Envio', 'buedoc-facturacao-electronica-agt');
             $method_title  = $order->get_shipping_method();
             if (!empty($method_title)) {
                 $shipping_name .= ' (' . $method_title . ')';
@@ -361,22 +361,22 @@ class BueDoc_Order_Manager {
      */
     public function issue_credit_note_for_order($order) {
         if (!$order instanceof WC_Order) {
-            return ['success' => false, 'error' => __('Encomenda inválida.', 'buedoc-woocommerce')];
+            return ['success' => false, 'error' => __('Encomenda inválida.', 'buedoc-facturacao-electronica-agt')];
         }
 
         $orig_number = $order->get_meta('_buedoc_document_number');
         if (empty($orig_number)) {
-            return ['success' => false, 'error' => __('Esta encomenda não possui documento de origem emitido no BueDoc.', 'buedoc-woocommerce')];
+            return ['success' => false, 'error' => __('Esta encomenda não possui documento de origem emitido no BueDoc.', 'buedoc-facturacao-electronica-agt')];
         }
 
         $existing_nc = $order->get_meta('_buedoc_nc_number');
         if (!empty($existing_nc)) {
-            return ['success' => false, 'error' => sprintf(__('Já foi emitida uma Nota de Crédito (%s) para esta encomenda.', 'buedoc-woocommerce'), $existing_nc)];
+            return ['success' => false, 'error' => sprintf(__('Já foi emitida uma Nota de Crédito (%s) para esta encomenda.', 'buedoc-facturacao-electronica-agt'), $existing_nc)];
         }
 
         $refund_total = abs((float)$order->get_total_refunded());
         if ($refund_total <= 0) {
-            return ['success' => false, 'error' => __('Nenhum reembolso registado para esta encomenda no WooCommerce.', 'buedoc-woocommerce')];
+            return ['success' => false, 'error' => __('Nenhum reembolso registado para esta encomenda no WooCommerce.', 'buedoc-facturacao-electronica-agt')];
         }
 
         $client_nif = $order->get_meta('_billing_nif');
@@ -389,7 +389,7 @@ class BueDoc_Order_Manager {
 
         $lines = [
             [
-                'description' => sprintf(__('Reembolso total/parcial ref. à Encomenda #%s', 'buedoc-woocommerce'), $order->get_order_number()),
+                'description' => sprintf(__('Reembolso total/parcial ref. à Encomenda #%s', 'buedoc-facturacao-electronica-agt'), $order->get_order_number()),
                 'quantity'    => 1,
                 'unitPrice'   => round($refund_total, 2),
                 'unit'        => 'un',
@@ -408,7 +408,7 @@ class BueDoc_Order_Manager {
             'clientNif'    => $client_nif,
             'clientName'   => trim($order->get_billing_first_name() . ' ' . $order->get_billing_last_name()),
             'clientEmail'  => $order->get_billing_email(),
-            'notes'        => sprintf(__('Nota de Crédito referente à anulação/reembolso da factura %s.', 'buedoc-woocommerce'), $orig_number),
+            'notes'        => sprintf(__('Nota de Crédito referente à anulação/reembolso da factura %s.', 'buedoc-facturacao-electronica-agt'), $orig_number),
             'lines'        => $lines,
         ];
 
@@ -416,7 +416,7 @@ class BueDoc_Order_Manager {
         $response = $client->create_document($payload);
 
         if (!$response['success']) {
-            $err = !empty($response['error']) ? $response['error'] : __('Erro ao emitir Nota de Crédito no BueDoc.', 'buedoc-woocommerce');
+            $err = !empty($response['error']) ? $response['error'] : __('Erro ao emitir Nota de Crédito no BueDoc.', 'buedoc-facturacao-electronica-agt');
             $order->add_order_note('BueDoc: ' . $err);
             return ['success' => false, 'error' => $err];
         }
@@ -427,7 +427,7 @@ class BueDoc_Order_Manager {
         $order->update_meta_data('_buedoc_nc_issued_at', current_time('mysql'));
         $order->save();
 
-        $order->add_order_note(sprintf(__('Nota de Crédito BueDoc emitida: %s referente ao reembolso.', 'buedoc-woocommerce'), $nc_data['number']));
+        $order->add_order_note(sprintf(__('Nota de Crédito BueDoc emitida: %s referente ao reembolso.', 'buedoc-facturacao-electronica-agt'), $nc_data['number']));
 
         return ['success' => true, 'document' => $nc_data];
     }

@@ -52,12 +52,12 @@ class BueDoc_Taxpayer {
             return $fields;
         }
 
-        $label = BueDoc_Settings::get_option('nif_field_label', __('NIF (Contribuinte)', 'buedoc-woocommerce'));
+        $label = BueDoc_Settings::get_option('nif_field_label', __('NIF (Contribuinte)', 'buedoc-facturacao-electronica-agt'));
         $is_required = ($requirement === 'required');
 
         $fields['billing_nif'] = [
             'label'        => $label,
-            'placeholder'  => __('Ex.: 5417000000 ou 004512873LA041', 'buedoc-woocommerce'),
+            'placeholder'  => __('Ex.: 5417000000 ou 004512873LA041', 'buedoc-facturacao-electronica-agt'),
             'required'     => $is_required,
             'class'        => ['form-row-wide'],
             'clear'        => true,
@@ -81,7 +81,7 @@ class BueDoc_Taxpayer {
         $nif = trim(strtoupper($nif));
 
         if ($requirement === 'required' && empty($nif)) {
-            wc_add_notice(__('Por favor, introduza o seu NIF (Número de Identificação Fiscal).', 'buedoc-woocommerce'), 'error');
+            wc_add_notice(__('Por favor, introduza o seu NIF (Número de Identificação Fiscal).', 'buedoc-facturacao-electronica-agt'), 'error');
             return;
         }
 
@@ -98,7 +98,7 @@ class BueDoc_Taxpayer {
         // Empresas: tipicamente 10 dígitos numéricos (ex: 5417000000)
         // Pessoais: número do BI, frequentemente 14 caracteres (ex: 004512873LA041)
         if (strlen($nif) < 9 || strlen($nif) > 15) {
-            wc_add_notice(__('O NIF introduzido possui um formato inválido.', 'buedoc-woocommerce'), 'error');
+            wc_add_notice(__('O NIF introduzido possui um formato inválido.', 'buedoc-facturacao-electronica-agt'), 'error');
             return;
         }
 
@@ -114,7 +114,7 @@ class BueDoc_Taxpayer {
                 if (empty($res['data']['isValid']) || empty($res['data']['active'])) {
                     $msg = !empty($res['data']['message'])
                         ? $res['data']['message']
-                        : __('O NIF indicado não é válido ou não se encontra activo na AGT.', 'buedoc-woocommerce');
+                        : __('O NIF indicado não é válido ou não se encontra activo na AGT.', 'buedoc-facturacao-electronica-agt');
                     wc_add_notice($msg, 'error');
                 }
             }
@@ -166,7 +166,7 @@ class BueDoc_Taxpayer {
         }
 
         if ($nif) {
-            echo '<p><strong>' . esc_html__('NIF:', 'buedoc-woocommerce') . '</strong> ' . esc_html($nif) . '</p>';
+            echo '<p><strong>' . esc_html__('NIF:', 'buedoc-facturacao-electronica-agt') . '</strong> ' . esc_html($nif) . '</p>';
         }
     }
 
@@ -180,7 +180,7 @@ class BueDoc_Taxpayer {
         $nif = trim(strtoupper($nif));
 
         if (empty($nif)) {
-            wp_send_json_error(['message' => __('NIF vazio.', 'buedoc-woocommerce')]);
+            wp_send_json_error(['message' => __('NIF vazio.', 'buedoc-facturacao-electronica-agt')]);
         }
 
         if ($nif === '999999999') {
@@ -188,7 +188,7 @@ class BueDoc_Taxpayer {
                 'isValid' => true,
                 'active'  => true,
                 'kind'    => 'INDIVIDUAL',
-                'message' => __('Consumidor Final', 'buedoc-woocommerce'),
+                'message' => __('Consumidor Final', 'buedoc-facturacao-electronica-agt'),
             ]);
         }
 
@@ -198,7 +198,7 @@ class BueDoc_Taxpayer {
         if ($res['success'] && isset($res['data'])) {
             wp_send_json_success($res['data']);
         } else {
-            $msg = !empty($res['error']) ? $res['error'] : __('NIF inválido ou não encontrado na AGT.', 'buedoc-woocommerce');
+            $msg = !empty($res['error']) ? $res['error'] : __('NIF inválido ou não encontrado na AGT.', 'buedoc-facturacao-electronica-agt');
             wp_send_json_error(['message' => $msg]);
         }
     }

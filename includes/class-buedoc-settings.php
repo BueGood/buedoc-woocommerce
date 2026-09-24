@@ -35,7 +35,7 @@ class BueDoc_Settings {
      * @return array
      */
     public function add_settings_tab($tabs) {
-        $tabs[self::TAB_ID] = __('BueDoc Facturação', 'buedoc-woocommerce');
+        $tabs[self::TAB_ID] = __('BueDoc Facturação', 'buedoc-facturacao-electronica-agt');
         return $tabs;
     }
 
@@ -85,41 +85,41 @@ class BueDoc_Settings {
 
         return [
             [
-                'title' => __('Ligação à API BueDoc', 'buedoc-woocommerce'),
+                'title' => __('Ligação à API BueDoc', 'buedoc-facturacao-electronica-agt'),
                 'type'  => 'title',
-                'desc'  => __('Configure a integração com o software de facturação certificado pela AGT BueDoc.', 'buedoc-woocommerce'),
+                'desc'  => __('Configure a integração com o software de facturação certificado pela AGT BueDoc.', 'buedoc-facturacao-electronica-agt'),
                 'id'    => 'buedoc_api_section',
             ],
             [
-                'title'   => __('Activar BueDoc', 'buedoc-woocommerce'),
-                'desc'    => __('Activar emissão de facturas certificadas pela AGT no WooCommerce.', 'buedoc-woocommerce'),
+                'title'   => __('Activar BueDoc', 'buedoc-facturacao-electronica-agt'),
+                'desc'    => __('Activar emissão de facturas certificadas pela AGT no WooCommerce.', 'buedoc-facturacao-electronica-agt'),
                 'id'      => 'woocommerce_buedoc_enabled',
                 'type'    => 'checkbox',
                 'default' => 'yes',
             ],
             [
-                'title'   => __('Ambiente da API', 'buedoc-woocommerce'),
-                'desc'    => __('Escolha o ambiente da API BueDoc.', 'buedoc-woocommerce'),
+                'title'   => __('Ambiente da API', 'buedoc-facturacao-electronica-agt'),
+                'desc'    => __('Escolha o ambiente da API BueDoc.', 'buedoc-facturacao-electronica-agt'),
                 'id'      => 'woocommerce_buedoc_environment',
                 'type'    => 'select',
                 'default' => 'production',
                 'options' => [
-                    'production' => __('Produção (doc.buegood.com)', 'buedoc-woocommerce'),
-                    'sandbox'    => __('Homologação / Sandbox (sandbox.buegood.com)', 'buedoc-woocommerce'),
-                    'custom'     => __('URL Personalizada / Localhost', 'buedoc-woocommerce'),
+                    'production' => __('Produção (doc.buegood.com)', 'buedoc-facturacao-electronica-agt'),
+                    'sandbox'    => __('Homologação / Sandbox (sandbox.buegood.com)', 'buedoc-facturacao-electronica-agt'),
+                    'custom'     => __('URL Personalizada / Localhost', 'buedoc-facturacao-electronica-agt'),
                 ],
             ],
             [
-                'title'             => __('URL da API Personalizada', 'buedoc-woocommerce'),
-                'desc'              => __('Preencha apenas se tiver seleccionado URL Personalizada (ex.: http://localhost:3000/api).', 'buedoc-woocommerce'),
+                'title'             => __('URL da API Personalizada', 'buedoc-facturacao-electronica-agt'),
+                'desc'              => __('Preencha apenas se tiver seleccionado URL Personalizada (ex.: http://localhost:3000/api).', 'buedoc-facturacao-electronica-agt'),
                 'id'                => 'woocommerce_buedoc_api_url',
                 'type'              => 'text',
                 'css'               => 'min-width:350px;',
                 'desc_tip'          => true,
             ],
             [
-                'title'    => __('Chave de API BueDoc', 'buedoc-woocommerce'),
-                'desc'     => __('Chave de API gerada no painel BueDoc (menu Definições da Empresa > Chaves de API). Ex.: bd_live_...', 'buedoc-woocommerce'),
+                'title'    => __('Chave de API BueDoc', 'buedoc-facturacao-electronica-agt'),
+                'desc'     => __('Chave de API gerada no painel BueDoc (menu Definições da Empresa > Chaves de API). Ex.: bd_live_...', 'buedoc-facturacao-electronica-agt'),
                 'id'       => 'woocommerce_buedoc_api_key',
                 'type'     => 'password',
                 'css'      => 'min-width:350px;',
@@ -132,21 +132,21 @@ class BueDoc_Settings {
 
             // Secção: Emissão de Facturas
             [
-                'title' => __('Emissão Automática de Facturas', 'buedoc-woocommerce'),
+                'title' => __('Emissão Automática de Facturas', 'buedoc-facturacao-electronica-agt'),
                 'type'  => 'title',
-                'desc'  => __('Defina quando e como os documentos fiscais são gerados e comunicados à AGT.', 'buedoc-woocommerce'),
+                'desc'  => __('Defina quando e como os documentos fiscais são gerados e comunicados à AGT.', 'buedoc-facturacao-electronica-agt'),
                 'id'    => 'buedoc_invoicing_section',
             ],
             [
-                'title'   => __('Emissão Automática', 'buedoc-woocommerce'),
-                'desc'    => __('Emitir facturas automaticamente quando a encomenda atingir os estados seleccionados.', 'buedoc-woocommerce'),
+                'title'   => __('Emissão Automática', 'buedoc-facturacao-electronica-agt'),
+                'desc'    => __('Emitir facturas automaticamente quando a encomenda atingir os estados seleccionados.', 'buedoc-facturacao-electronica-agt'),
                 'id'      => 'woocommerce_buedoc_auto_issue',
                 'type'    => 'checkbox',
                 'default' => 'yes',
             ],
             [
-                'title'    => __('Estados para Emissão', 'buedoc-woocommerce'),
-                'desc'     => __('A factura será gerada quando o estado da encomenda for alterado para qualquer um dos estados seleccionados.', 'buedoc-woocommerce'),
+                'title'    => __('Estados para Emissão', 'buedoc-facturacao-electronica-agt'),
+                'desc'     => __('A factura será gerada quando o estado da encomenda for alterado para qualquer um dos estados seleccionados.', 'buedoc-facturacao-electronica-agt'),
                 'id'       => 'woocommerce_buedoc_trigger_status',
                 'type'     => 'multiselect',
                 'class'    => 'wc-enhanced-select',
@@ -156,36 +156,36 @@ class BueDoc_Settings {
                 'desc_tip' => true,
             ],
             [
-                'title'   => __('Tipo de Documento Fiscal', 'buedoc-woocommerce'),
-                'desc'    => __('Seleccione o tipo de documento a emitir por defeito.', 'buedoc-woocommerce'),
+                'title'   => __('Tipo de Documento Fiscal', 'buedoc-facturacao-electronica-agt'),
+                'desc'    => __('Seleccione o tipo de documento a emitir por defeito.', 'buedoc-facturacao-electronica-agt'),
                 'id'      => 'woocommerce_buedoc_doc_type',
                 'type'    => 'select',
                 'default' => 'FR',
                 'options' => [
-                    'FR'   => __('Factura-Recibo (FR) — Venda paga no acto (Recomendado para e-commerce)', 'buedoc-woocommerce'),
-                    'FT'   => __('Factura (FT) — Venda a prazo / aguarda pagamento', 'buedoc-woocommerce'),
-                    'auto' => __('Automático: FR se paga (Processing/Completed), FT se pendente (On-Hold)', 'buedoc-woocommerce'),
+                    'FR'   => __('Factura-Recibo (FR) — Venda paga no acto (Recomendado para e-commerce)', 'buedoc-facturacao-electronica-agt'),
+                    'FT'   => __('Factura (FT) — Venda a prazo / aguarda pagamento', 'buedoc-facturacao-electronica-agt'),
+                    'auto' => __('Automático: FR se paga (Processing/Completed), FT se pendente (On-Hold)', 'buedoc-facturacao-electronica-agt'),
                 ],
             ],
             [
-                'title'   => __('Meio de Pagamento Padrão', 'buedoc-woocommerce'),
-                'desc'    => __('Texto do meio de pagamento a imprimir na Factura-Recibo (ex.: Multicaixa, Transferência Bancária, Cartão de Crédito).', 'buedoc-woocommerce'),
+                'title'   => __('Meio de Pagamento Padrão', 'buedoc-facturacao-electronica-agt'),
+                'desc'    => __('Texto do meio de pagamento a imprimir na Factura-Recibo (ex.: Multicaixa, Transferência Bancária, Cartão de Crédito).', 'buedoc-facturacao-electronica-agt'),
                 'id'      => 'woocommerce_buedoc_default_payment_method',
                 'type'    => 'text',
                 'default' => 'Multicaixa',
                 'desc_tip' => true,
             ],
             [
-                'title'             => __('Prazo de Vencimento (Dias)', 'buedoc-woocommerce'),
-                'desc'              => __('Prazo em dias para a data de vencimento em caso de emissão de Facturas (FT).', 'buedoc-woocommerce'),
+                'title'             => __('Prazo de Vencimento (Dias)', 'buedoc-facturacao-electronica-agt'),
+                'desc'              => __('Prazo em dias para a data de vencimento em caso de emissão de Facturas (FT).', 'buedoc-facturacao-electronica-agt'),
                 'id'                => 'woocommerce_buedoc_due_days',
                 'type'              => 'number',
                 'custom_attributes' => ['min' => 0, 'step' => 1],
                 'default'           => '30',
             ],
             [
-                'title'   => __('Observações do Documento', 'buedoc-woocommerce'),
-                'desc'    => __('Texto a constar no rodapé da factura. Tags disponíveis: {order_number}, {site_name}, {order_date}.', 'buedoc-woocommerce'),
+                'title'   => __('Observações do Documento', 'buedoc-facturacao-electronica-agt'),
+                'desc'    => __('Texto a constar no rodapé da factura. Tags disponíveis: {order_number}, {site_name}, {order_date}.', 'buedoc-facturacao-electronica-agt'),
                 'id'      => 'woocommerce_buedoc_notes_template',
                 'type'    => 'textarea',
                 'css'     => 'min-width:350px; min-height: 70px;',
@@ -198,14 +198,14 @@ class BueDoc_Settings {
 
             // Secção: Regras de IVA e Isenção AGT
             [
-                'title' => __('Regras Fiscais de IVA (AGT Angola)', 'buedoc-woocommerce'),
+                'title' => __('Regras Fiscais de IVA (AGT Angola)', 'buedoc-facturacao-electronica-agt'),
                 'type'  => 'title',
-                'desc'  => __('Definições padrão de IVA caso os produtos não possuam taxas específicas configuradas no WooCommerce.', 'buedoc-woocommerce'),
+                'desc'  => __('Definições padrão de IVA caso os produtos não possuam taxas específicas configuradas no WooCommerce.', 'buedoc-facturacao-electronica-agt'),
                 'id'    => 'buedoc_tax_section',
             ],
             [
-                'title'   => __('Taxa de IVA Padrão (%)', 'buedoc-woocommerce'),
-                'desc'    => __('Taxa de IVA geral aplicada aos produtos (Regime Geral: 14%).', 'buedoc-woocommerce'),
+                'title'   => __('Taxa de IVA Padrão (%)', 'buedoc-facturacao-electronica-agt'),
+                'desc'    => __('Taxa de IVA geral aplicada aos produtos (Regime Geral: 14%).', 'buedoc-facturacao-electronica-agt'),
                 'id'      => 'woocommerce_buedoc_default_vat_rate',
                 'type'    => 'select',
                 'default' => '14',
@@ -218,8 +218,8 @@ class BueDoc_Settings {
                 ],
             ],
             [
-                'title'    => __('Motivo de Isenção Padrão (0%)', 'buedoc-woocommerce'),
-                'desc'     => __('Exigido pela AGT para qualquer produto ou serviço tributado a 0%.', 'buedoc-woocommerce'),
+                'title'    => __('Motivo de Isenção Padrão (0%)', 'buedoc-facturacao-electronica-agt'),
+                'desc'     => __('Exigido pela AGT para qualquer produto ou serviço tributado a 0%.', 'buedoc-facturacao-electronica-agt'),
                 'id'       => 'woocommerce_buedoc_default_exemption',
                 'type'     => 'select',
                 'default'  => 'M10',
@@ -227,8 +227,8 @@ class BueDoc_Settings {
                 'desc_tip' => true,
             ],
             [
-                'title'   => __('Taxa de IVA nos Portes de Envio (%)', 'buedoc-woocommerce'),
-                'desc'    => __('Taxa de IVA aplicada aos custos de transporte.', 'buedoc-woocommerce'),
+                'title'   => __('Taxa de IVA nos Portes de Envio (%)', 'buedoc-facturacao-electronica-agt'),
+                'desc'    => __('Taxa de IVA aplicada aos custos de transporte.', 'buedoc-facturacao-electronica-agt'),
                 'id'      => 'woocommerce_buedoc_shipping_vat_rate',
                 'type'    => 'select',
                 'default' => '14',
@@ -240,8 +240,8 @@ class BueDoc_Settings {
                 ],
             ],
             [
-                'title'    => __('Motivo de Isenção nos Portes (0%)', 'buedoc-woocommerce'),
-                'desc'     => __('Motivo caso a taxa de envio seja 0%.', 'buedoc-woocommerce'),
+                'title'    => __('Motivo de Isenção nos Portes (0%)', 'buedoc-facturacao-electronica-agt'),
+                'desc'     => __('Motivo caso a taxa de envio seja 0%.', 'buedoc-facturacao-electronica-agt'),
                 'id'       => 'woocommerce_buedoc_shipping_exemption',
                 'type'     => 'select',
                 'default'  => 'M10',
@@ -255,39 +255,39 @@ class BueDoc_Settings {
 
             // Secção: NIF no Checkout
             [
-                'title' => __('Campo de NIF no Checkout', 'buedoc-woocommerce'),
+                'title' => __('Campo de NIF no Checkout', 'buedoc-facturacao-electronica-agt'),
                 'type'  => 'title',
-                'desc'  => __('Configuração do campo de Número de Identificação Fiscal para clientes no checkout.', 'buedoc-woocommerce'),
+                'desc'  => __('Configuração do campo de Número de Identificação Fiscal para clientes no checkout.', 'buedoc-facturacao-electronica-agt'),
                 'id'    => 'buedoc_checkout_section',
             ],
             [
-                'title'   => __('Exigência do NIF', 'buedoc-woocommerce'),
-                'desc'    => __('Comportamento do campo NIF na finalização de compra.', 'buedoc-woocommerce'),
+                'title'   => __('Exigência do NIF', 'buedoc-facturacao-electronica-agt'),
+                'desc'    => __('Comportamento do campo NIF na finalização de compra.', 'buedoc-facturacao-electronica-agt'),
                 'id'      => 'woocommerce_buedoc_nif_field_requirement',
                 'type'    => 'select',
                 'default' => 'optional',
                 'options' => [
-                    'optional' => __('Opcional (Preenche Consumidor Final 999999999 se vazio)', 'buedoc-woocommerce'),
-                    'required' => __('Obrigatório (Exige NIF válido para concluir a compra)', 'buedoc-woocommerce'),
-                    'hidden'   => __('Oculto (Emite sempre como Consumidor Final 999999999)', 'buedoc-woocommerce'),
+                    'optional' => __('Opcional (Preenche Consumidor Final 999999999 se vazio)', 'buedoc-facturacao-electronica-agt'),
+                    'required' => __('Obrigatório (Exige NIF válido para concluir a compra)', 'buedoc-facturacao-electronica-agt'),
+                    'hidden'   => __('Oculto (Emite sempre como Consumidor Final 999999999)', 'buedoc-facturacao-electronica-agt'),
                 ],
             ],
             [
-                'title'   => __('Rótulo do Campo NIF', 'buedoc-woocommerce'),
+                'title'   => __('Rótulo do Campo NIF', 'buedoc-facturacao-electronica-agt'),
                 'id'      => 'woocommerce_buedoc_nif_field_label',
                 'type'    => 'text',
                 'default' => 'NIF (Contribuinte)',
             ],
             [
-                'title'   => __('Validação em Tempo Real', 'buedoc-woocommerce'),
-                'desc'    => __('Verificar a validade e actividade do NIF directamente na AGT durante o checkout.', 'buedoc-woocommerce'),
+                'title'   => __('Validação em Tempo Real', 'buedoc-facturacao-electronica-agt'),
+                'desc'    => __('Verificar a validade e actividade do NIF directamente na AGT durante o checkout.', 'buedoc-facturacao-electronica-agt'),
                 'id'      => 'woocommerce_buedoc_validate_nif_live',
                 'type'    => 'checkbox',
                 'default' => 'yes',
             ],
             [
-                'title'   => __('NIF de Consumidor Final', 'buedoc-woocommerce'),
-                'desc'    => __('NIF padrão quando o cliente não indicar o seu próprio NIF.', 'buedoc-woocommerce'),
+                'title'   => __('NIF de Consumidor Final', 'buedoc-facturacao-electronica-agt'),
+                'desc'    => __('NIF padrão quando o cliente não indicar o seu próprio NIF.', 'buedoc-facturacao-electronica-agt'),
                 'id'      => 'woocommerce_buedoc_consumer_final_nif',
                 'type'    => 'text',
                 'default' => '999999999',
@@ -299,28 +299,28 @@ class BueDoc_Settings {
 
             // Secção: Emails e Área de Cliente
             [
-                'title' => __('Emails e Área de Cliente', 'buedoc-woocommerce'),
+                'title' => __('Emails e Área de Cliente', 'buedoc-facturacao-electronica-agt'),
                 'type'  => 'title',
-                'desc'  => __('Disponibilização do PDF da factura aos clientes.', 'buedoc-woocommerce'),
+                'desc'  => __('Disponibilização do PDF da factura aos clientes.', 'buedoc-facturacao-electronica-agt'),
                 'id'    => 'buedoc_emails_section',
             ],
             [
-                'title'   => __('Anexar PDF aos Emails', 'buedoc-woocommerce'),
-                'desc'    => __('Anexar o PDF oficial certificado da factura aos emails de encomenda enviada ao cliente.', 'buedoc-woocommerce'),
+                'title'   => __('Anexar PDF aos Emails', 'buedoc-facturacao-electronica-agt'),
+                'desc'    => __('Anexar o PDF oficial certificado da factura aos emails de encomenda enviada ao cliente.', 'buedoc-facturacao-electronica-agt'),
                 'id'      => 'woocommerce_buedoc_attach_pdf_email',
                 'type'    => 'checkbox',
                 'default' => 'yes',
             ],
             [
-                'title'   => __('Link de Descarga nos Emails', 'buedoc-woocommerce'),
-                'desc'    => __('Incluir botão/link de download do PDF no corpo do email da encomenda.', 'buedoc-woocommerce'),
+                'title'   => __('Link de Descarga nos Emails', 'buedoc-facturacao-electronica-agt'),
+                'desc'    => __('Incluir botão/link de download do PDF no corpo do email da encomenda.', 'buedoc-facturacao-electronica-agt'),
                 'id'      => 'woocommerce_buedoc_show_link_email',
                 'type'    => 'checkbox',
                 'default' => 'yes',
             ],
             [
-                'title'   => __('Botão em "A Minha Conta"', 'buedoc-woocommerce'),
-                'desc'    => __('Permitir que clientes descarreguem a factura na lista de encomendas na área de cliente.', 'buedoc-woocommerce'),
+                'title'   => __('Botão em "A Minha Conta"', 'buedoc-facturacao-electronica-agt'),
+                'desc'    => __('Permitir que clientes descarreguem a factura na lista de encomendas na área de cliente.', 'buedoc-facturacao-electronica-agt'),
                 'id'      => 'woocommerce_buedoc_show_link_my_account',
                 'type'    => 'checkbox',
                 'default' => 'yes',
@@ -332,16 +332,16 @@ class BueDoc_Settings {
 
             // Secção: Depuração
             [
-                'title' => __('Depuração e Diagnóstico', 'buedoc-woocommerce'),
+                'title' => __('Depuração e Diagnóstico', 'buedoc-facturacao-electronica-agt'),
                 'type'  => 'title',
-                'desc'  => __('Ferramentas de registo para suporte técnico.', 'buedoc-woocommerce'),
+                'desc'  => __('Ferramentas de registo para suporte técnico.', 'buedoc-facturacao-electronica-agt'),
                 'id'    => 'buedoc_debug_section',
             ],
             [
-                'title'   => __('Registo de Logs (Debug)', 'buedoc-woocommerce'),
+                'title'   => __('Registo de Logs (Debug)', 'buedoc-facturacao-electronica-agt'),
                 'desc'    => sprintf(
-                    __('Registar comunicações da API no registo do WooCommerce (%s).', 'buedoc-woocommerce'),
-                    '<a href="' . admin_url('admin.php?page=wc-status&tab=logs') . '" target="_blank">' . __('Ver Logs', 'buedoc-woocommerce') . '</a>'
+                    __('Registar comunicações da API no registo do WooCommerce (%s).', 'buedoc-facturacao-electronica-agt'),
+                    '<a href="' . admin_url('admin.php?page=wc-status&tab=logs') . '" target="_blank">' . __('Ver Logs', 'buedoc-facturacao-electronica-agt') . '</a>'
                 ),
                 'id'      => 'woocommerce_buedoc_debug_log',
                 'type'    => 'checkbox',
@@ -373,7 +373,7 @@ class BueDoc_Settings {
         <div style="margin-bottom: 20px;">
             <button type="button" id="buedoc-test-connection-btn" class="button button-secondary">
                 <span class="dashicons dashicons-update" style="vertical-align: middle; margin-top: -2px;"></span>
-                <?php esc_html_e('Testar Ligação à API BueDoc', 'buedoc-woocommerce'); ?>
+                <?php esc_html_e('Testar Ligação à API BueDoc', 'buedoc-facturacao-electronica-agt'); ?>
             </button>
             <div id="buedoc-test-result" class="buedoc-connection-box" style="display:none;"></div>
         </div>
@@ -407,7 +407,7 @@ class BueDoc_Settings {
         check_ajax_referer('buedoc_admin_nonce', 'nonce');
 
         if (!current_user_can('manage_woocommerce')) {
-            wp_send_json_error(['message' => __('Sem permissões para realizar esta acção.', 'buedoc-woocommerce')]);
+            wp_send_json_error(['message' => __('Sem permissões para realizar esta acção.', 'buedoc-facturacao-electronica-agt')]);
         }
 
         $api_key     = isset($_POST['api_key']) ? sanitize_text_field(wp_unslash($_POST['api_key'])) : '';
@@ -415,7 +415,7 @@ class BueDoc_Settings {
         $custom_url  = isset($_POST['custom_url']) ? esc_url_raw(wp_unslash($_POST['custom_url'])) : '';
 
         if (empty($api_key)) {
-            wp_send_json_error(['message' => __('Chave de API não informada.', 'buedoc-woocommerce')]);
+            wp_send_json_error(['message' => __('Chave de API não informada.', 'buedoc-facturacao-electronica-agt')]);
         }
 
         $client = new BueDoc_API_Client($api_key, $environment, $custom_url, true);
@@ -424,7 +424,7 @@ class BueDoc_Settings {
         if ($result['success']) {
             wp_send_json_success($result['data']);
         } else {
-            wp_send_json_error(['message' => !empty($result['error']) ? $result['error'] : __('Falha na ligação.', 'buedoc-woocommerce')]);
+            wp_send_json_error(['message' => !empty($result['error']) ? $result['error'] : __('Falha na ligação.', 'buedoc-facturacao-electronica-agt')]);
         }
     }
 
