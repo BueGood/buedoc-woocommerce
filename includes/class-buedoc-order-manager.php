@@ -71,6 +71,7 @@ class BueDoc_Order_Manager {
         $existing_doc_id = $order->get_meta('_buedoc_document_id');
         if (!empty($existing_doc_id)) {
             $existing_number = $order->get_meta('_buedoc_document_number');
+            /* translators: 1: order ID, 2: existing document number */
             return [
                 'success' => false,
                 'error'   => sprintf(__('A encomenda #%1$d já possui documento emitido no BueDoc (%2$s).', 'buedoc-facturacao-electronica-agt'), $order_id, $existing_number),
@@ -138,14 +139,14 @@ class BueDoc_Order_Manager {
         $due_date = null;
         if ($doc_type === 'FT') {
             $due_days = (int)BueDoc_Settings::get_option('due_days', 30);
-            $due_date = date('Y-m-d', strtotime("+{$due_days} days"));
+            $due_date = gmdate('Y-m-d', strtotime("+{$due_days} days"));
         }
 
         // 7. Observações com tags substituídas
         $notes_template = BueDoc_Settings::get_option('notes_template', 'Documento emitido automaticamente para a Encomenda #{order_number}.');
         $notes = str_replace(
             ['{order_number}', '{site_name}', '{order_date}'],
-            [$order->get_order_number(), get_bloginfo('name'), $order->get_date_created() ? $order->get_date_created()->date('d/m/Y') : date('d/m/Y')],
+            [$order->get_order_number(), get_bloginfo('name'), $order->get_date_created() ? $order->get_date_created()->date('d/m/Y') : gmdate('d/m/Y')],
             $notes_template
         );
 
@@ -182,6 +183,7 @@ class BueDoc_Order_Manager {
 
         if (!$response['success']) {
             $err_msg = !empty($response['error']) ? $response['error'] : __('Erro desconhecido retornado pela API BueDoc.', 'buedoc-facturacao-electronica-agt');
+            /* translators: 1: document type (FR or FT), 2: error message */
             $order->add_order_note(sprintf(__('BueDoc: Falha na emissão da %1$s: %2$s', 'buedoc-facturacao-electronica-agt'), $doc_type, $err_msg));
             return ['success' => false, 'error' => $err_msg];
         }
@@ -205,6 +207,7 @@ class BueDoc_Order_Manager {
         $order->save();
 
         // 12. Adicionar nota explicativa na encomenda
+        /* translators: 1: document number, 2: AGT status, 3: gross total */
         $note = sprintf(
             __('Documento fiscal BueDoc emitido com sucesso: %1$s (AGT Status: %2$s). Total: %3$s Kz.', 'buedoc-facturacao-electronica-agt'),
             $doc_data['number'],
@@ -371,6 +374,7 @@ class BueDoc_Order_Manager {
 
         $existing_nc = $order->get_meta('_buedoc_nc_number');
         if (!empty($existing_nc)) {
+            /* translators: %s: Credit note number */
             return ['success' => false, 'error' => sprintf(__('Já foi emitida uma Nota de Crédito (%s) para esta encomenda.', 'buedoc-facturacao-electronica-agt'), $existing_nc)];
         }
 
@@ -389,6 +393,7 @@ class BueDoc_Order_Manager {
 
         $lines = [
             [
+                /* translators: %s: Order number */
                 'description' => sprintf(__('Reembolso total/parcial ref. à Encomenda #%s', 'buedoc-facturacao-electronica-agt'), $order->get_order_number()),
                 'quantity'    => 1,
                 'unitPrice'   => round($refund_total, 2),
@@ -408,6 +413,7 @@ class BueDoc_Order_Manager {
             'clientNif'    => $client_nif,
             'clientName'   => trim($order->get_billing_first_name() . ' ' . $order->get_billing_last_name()),
             'clientEmail'  => $order->get_billing_email(),
+            /* translators: %s: Original document number */
             'notes'        => sprintf(__('Nota de Crédito referente à anulação/reembolso da factura %s.', 'buedoc-facturacao-electronica-agt'), $orig_number),
             'lines'        => $lines,
         ];
@@ -427,6 +433,7 @@ class BueDoc_Order_Manager {
         $order->update_meta_data('_buedoc_nc_issued_at', current_time('mysql'));
         $order->save();
 
+        /* translators: %s: Credit note number */
         $order->add_order_note(sprintf(__('Nota de Crédito BueDoc emitida: %s referente ao reembolso.', 'buedoc-facturacao-electronica-agt'), $nc_data['number']));
 
         return ['success' => true, 'document' => $nc_data];

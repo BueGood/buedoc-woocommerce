@@ -77,6 +77,7 @@ class BueDoc_Taxpayer {
             return;
         }
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce is verified by WooCommerce core checkout handler.
         $nif = isset($_POST['billing_nif']) ? sanitize_text_field(wp_unslash($_POST['billing_nif'])) : '';
         $nif = trim(strtoupper($nif));
 
@@ -129,6 +130,7 @@ class BueDoc_Taxpayer {
      */
     public function save_nif_to_order($order, $data) {
         $requirement = BueDoc_Settings::get_option('nif_field_requirement', 'optional');
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce is verified by WooCommerce core checkout handler.
         $nif = isset($_POST['billing_nif']) ? sanitize_text_field(wp_unslash($_POST['billing_nif'])) : '';
         $nif = trim(strtoupper($nif));
 
@@ -148,7 +150,9 @@ class BueDoc_Taxpayer {
      * @param string $load_address
      */
     public function save_nif_to_customer($user_id, $load_address) {
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce is verified by WooCommerce customer address update handler.
         if ($load_address === 'billing' && isset($_POST['billing_nif'])) {
+            // phpcs:ignore WordPress.Security.NonceVerification.Missing
             $nif = sanitize_text_field(wp_unslash($_POST['billing_nif']));
             update_user_meta($user_id, 'billing_nif', trim(strtoupper($nif)));
         }

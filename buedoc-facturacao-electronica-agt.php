@@ -124,8 +124,8 @@ class BueDoc_WooCommerce {
         ?>
         <div class="notice notice-error is-dismissible">
             <p>
-                <strong><?php esc_html_e('BueDoc Facturação Electrónica AGT', 'buedoc-facturacao-eletronica-agt'); ?>:</strong>
-                <?php esc_html_e('Este plugin necessita que o WooCommerce esteja instalado e activo.', 'buedoc-facturacao-eletronica-agt'); ?>
+                <strong><?php esc_html_e('BueDoc Facturação Electrónica AGT', 'buedoc-facturacao-electronica-agt'); ?>:</strong>
+                <?php esc_html_e('Este plugin necessita que o WooCommerce esteja instalado e activo.', 'buedoc-facturacao-electronica-agt'); ?>
             </p>
         </div>
         <?php

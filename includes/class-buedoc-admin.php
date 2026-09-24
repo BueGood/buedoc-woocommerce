@@ -284,13 +284,17 @@ class BueDoc_Admin {
      * Exibe avisos de resultado da acção em massa.
      */
     public function render_bulk_action_notices() {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         if (isset($_GET['buedoc_bulk_emitted'])) {
-            $emitted = (int)$_GET['buedoc_bulk_emitted'];
-            $failed  = isset($_GET['buedoc_bulk_failed']) ? (int)$_GET['buedoc_bulk_failed'] : 0;
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+            $emitted = isset($_GET['buedoc_bulk_emitted']) ? absint($_GET['buedoc_bulk_emitted']) : 0;
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+            $failed  = isset($_GET['buedoc_bulk_failed']) ? absint($_GET['buedoc_bulk_failed']) : 0;
 
             if ($emitted > 0) {
                 printf(
                     '<div class="notice notice-success is-dismissible"><p>%s</p></div>',
+                    /* translators: %d: number of invoices successfully issued */
                     esc_html(sprintf(_n('%d factura BueDoc emitida com sucesso.', '%d facturas BueDoc emitidas com sucesso.', $emitted, 'buedoc-facturacao-electronica-agt'), $emitted))
                 );
             }
@@ -298,6 +302,7 @@ class BueDoc_Admin {
             if ($failed > 0) {
                 printf(
                     '<div class="notice notice-warning is-dismissible"><p>%s</p></div>',
+                    /* translators: %d: number of failed or skipped orders */
                     esc_html(sprintf(_n('%d encomenda falhou ou já possuía factura.', '%d encomendas falharam ou já possuíam factura.', $failed, 'buedoc-facturacao-electronica-agt'), $failed))
                 );
             }
@@ -359,6 +364,7 @@ class BueDoc_Admin {
         header('Pragma: public');
         header('Content-Length: ' . strlen($pdf_res['pdf_content']));
 
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Binary PDF data stream.
         echo $pdf_res['pdf_content'];
         exit;
     }

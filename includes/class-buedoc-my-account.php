@@ -94,6 +94,7 @@ class BueDoc_My_Account {
                 <p style="margin: 0; color: #475569; font-size: 13px;">
                     <?php
                     printf(
+                        /* translators: 1: document type (Factura or Factura-Recibo), 2: document number */
                         esc_html__('Documento emitido: %1$s %2$s', 'buedoc-facturacao-electronica-agt'),
                         esc_html($doc_type === 'FR' ? 'Factura-Recibo' : 'Factura'),
                         '<strong>' . esc_html($doc_number) . '</strong>'

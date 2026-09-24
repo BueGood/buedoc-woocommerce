@@ -12,13 +12,9 @@ if (!defined('ABSPATH')) {
 class BueDoc_i18n {
 
     /**
-     * Carrega o text domain para traduções.
+     * O WordPress carrega as traduções automaticamente no WordPress.org desde a versão 4.6.
      */
     public function load_plugin_textdomain() {
-        load_plugin_textdomain(
-            'buedoc-facturacao-electronica-agt',
-            false,
-            dirname(dirname(plugin_basename(__FILE__))) . '/languages/'
-        );
+        // Automaticamente gerido pelo WordPress.org.
     }
 }

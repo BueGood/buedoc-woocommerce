@@ -1,7 +1,7 @@
 === BueDoc Facturação Electrónica AGT ===
 Contributors: ravelinodecastro, buegood, buegoodcompany
 Donate link: https://doc.buegood.com
-Tags: agt, angola, facturacao, facturacao-electronica, invoice, invoicing, billing, ecommerce
+Tags: invoicing, invoice, agt, angola, billing
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -9,98 +9,98 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Emissão automática de facturas e facturas-recibo certificadas pela AGT em Angola através da API BueDoc para lojas online.
+Automatic issuance of invoices and receipts certified by the AGT tax authority in Angola via the BueDoc API for WooCommerce online stores.
 
 == Description ==
 
-O **BueDoc Facturação Electrónica AGT** é a solução oficial de integração para emissão automatizada de documentos fiscais certificados pela **AGT (Administração Geral Tributária de Angola)** em lojas WooCommerce.
+**BueDoc Facturação Electrónica AGT** is the official integration plugin for automated issuance of fiscal invoices and receipts certified by **AGT (Administração Geral Tributária - General Tax Administration of Angola)** in WooCommerce stores.
 
-Com este plugin, a sua loja emite facturas (**FT**) e facturas-recibo (**FR**) em total conformidade fiscal angolana, com numeração sequencial em série exclusiva para API, assinatura digital RSA-SHA1 em cadeia, códigos JWS RS256 e geração de QR Code fiscal oficial.
+With this plugin, your store issues certified Invoices (**FT**) and Invoice-Receipts (**FR**) in full compliance with Angolan tax legislation, featuring sequential numbering in dedicated API series, chained RSA-SHA1 digital signatures, RS256 JWS tokens, and official fiscal QR Code generation.
 
-### Principais Vantagens
+### Key Features
 
-* **Certificado pela AGT (Angola):** Cumpre todos os requisitos do Regime Jurídico das Facturas e da especificação técnica AGT DS-120.
-* **Séries Exclusivas de API (`isApi: true`):** A numeração dos documentos gerados pela loja virtual é isolada da interface web do BueDoc, evitando conflitos ou quebras na sequência cronológica fiscal.
-* **Emissão 100% Automática:** Emite o documento fiscal assim que a encomenda é paga ou atinge os estados definidos (*A processar* ou *Concluída*).
-* **Campo NIF no Checkout:** Adiciona o campo NIF com validação em tempo real na base de dados de contribuintes da AGT.
-* **Regras de IVA e Isenções Oficiais:** Suporte nativo a todas as taxas de IVA (14%, 7%, 5%, 0%) e códigos de isenção oficiais da AGT (**M00** a **M99**).
-* **Portes e Taxas Discriminados:** Os custos de envio e taxas adicionais são discriminados nas linhas fiscais do documento com a respectiva tributação ou isenção.
-* **Notas de Crédito (NC):** Emita Notas de Crédito rectificativas com referência à factura de origem em caso de reembolso da encomenda.
-* **Área de Cliente e Emails:** O cliente recebe o PDF oficial anexado ao email da encomenda e pode descarregá-lo a qualquer momento na sua conta.
-* **Compatibilidade HPOS:** Compatível com o armazenamento de encomendas de alto desempenho (High-Performance Order Storage) do WooCommerce.
+* **AGT Certified (Angola):** Fully compliant with Presidential Decree 71/25 and the AGT DS-120 technical electronic invoicing specification.
+* **Exclusive API Series (`isApi: true`):** Document numbering generated from your online store is isolated from the BueDoc web interface, preventing chronological gaps or sequence collisions.
+* **100% Automated Issuance:** Automatically generates and transmits the invoice to AGT as soon as the order is paid or reaches your chosen order statuses (*Processing* or *Completed*).
+* **Tax ID (NIF) Field at Checkout:** Adds a dedicated NIF (Tax Number) field to WooCommerce billing with real-time validation against the official AGT taxpayer database.
+* **Official VAT (IVA) Rates and Exemptions:** Native support for all Angolan VAT rates (14%, 7%, 5%, 0%) and official AGT exemption codes (**M00** through **M99**).
+* **Itemized Shipping and Fees:** Shipping costs and additional fees are itemized on invoice lines with appropriate tax rates or legal exemption codes.
+* **Credit Notes (NC):** Issue rectified Credit Notes referencing the original invoice when orders are refunded.
+* **Customer Area and Email Attachments:** Customers receive the official certified PDF invoice automatically attached to their order completion emails and can download it at any time from their My Account area.
+* **HPOS Ready:** Fully declared compatibility with WooCommerce High-Performance Order Storage (Custom Order Tables).
 
 == Third-Party Service Disclosure ==
 
-Este plugin conecta-se e depende do serviço externo **BueDoc API**, uma plataforma de facturação electrónica em nuvem (SaaS) desenvolvida e operada pela **BueGood Tecnologias**:
+This plugin connects to and relies on the external cloud invoicing service **BueDoc API**, developed and operated by **BueGood Tecnologias**:
 
-* **Fornecedor do Serviço:** BueGood Tecnologias (https://buegood.com)
-* **Finalidade:** Assinatura digital RSA-SHA1 de documentos fiscais, geração de QR Code certificado, atribuição de sequência fiscal cronológica e comunicação telemática com os servidores da AGT em Angola.
-* **Dados Transmitidos:** No momento da emissão do documento fiscal, são enviados para a API do BueDoc os dados da encomenda: NIF do cliente, nome, morada de facturação, email, telefone e linhas dos artigos (designação, quantidade, preço unitário e taxa de IVA). Na validação em tempo real no checkout, apenas o NIF digitado é consultado.
-* **Termos de Serviço:** https://doc.buegood.com/termos
-* **Política de Privacidade:** https://doc.buegood.com/privacidade
+* **Service Provider:** BueGood Tecnologias (https://buegood.com)
+* **Service Purpose:** Chained RSA-SHA1 digital signing of fiscal documents, official QR Code generation, chronological sequential number assignment, and electronic submission to the AGT tax authority servers in Angola.
+* **Data Transmitted:** When an invoice is issued, the following order details are transmitted to the BueDoc API: customer NIF (tax number), customer name, billing address, email, telephone, and order line items (product descriptions, quantities, unit prices, and VAT rates). During live checkout validation, only the entered NIF is verified against the AGT database.
+* **Terms of Service:** https://doc.buegood.com/termos
+* **Privacy Policy:** https://doc.buegood.com/privacidade
 
 == Installation ==
 
-### Instalação Automática via Painel
-1. No painel de administração do WordPress, aceda a **Plugins > Adicionar Novo**.
-2. Pesquise por `BueDoc Facturação para WooCommerce`.
-3. Clique em **Instalar Agora** e, de seguida, em **Activar**.
+### Automatic Installation
+1. Log in to your WordPress Admin dashboard and navigate to **Plugins > Add New**.
+2. Search for `BueDoc Facturação Electrónica AGT`.
+3. Click **Install Now**, and then click **Activate**.
 
-### Instalação Manual
-1. Descarregue o ficheiro ZIP do plugin.
-2. No painel do WordPress, vá a **Plugins > Adicionar Novo > Carregar Plugin**.
-3. Seleccione o ficheiro `buedoc-woocommerce.zip` e clique em **Instalar Agora**.
-4. Active o plugin através do ecrã de plugins.
+### Manual Installation
+1. Download the plugin ZIP file.
+2. In your WordPress Admin dashboard, go to **Plugins > Add New > Upload Plugin**.
+3. Select the `buedoc-facturacao-electronica-agt.zip` file and click **Install Now**.
+4. Activate the plugin from the Plugins screen.
 
-### Configuração Inicial
-1. Aceda a **WooCommerce > BueDoc Facturação** (ou **WooCommerce > Definições > BueDoc Facturação**).
-2. Seleccione o ambiente desejado (**Produção** ou **Homologação / Sandbox**).
-3. Insira a sua **Chave de API BueDoc** (obtida no painel BueDoc em *Definições > Chaves de API*).
-4. Clique no botão **Testar Ligação à API BueDoc** para validar as credenciais e verificar a quota mensal do seu plano.
-5. Ajuste as opções de emissão automática, taxas de IVA padrão e requisitos do NIF no checkout.
-6. Clique em **Guardar alterações**.
+### Initial Configuration
+1. Go to **WooCommerce > Settings > BueDoc Facturação** (or click the **BueDoc Facturação** submenu under WooCommerce).
+2. Choose the environment (**Production** or **Sandbox / Homologação**).
+3. Paste your **BueDoc API Key** (generated in the BueDoc dashboard under *Settings > API Keys*).
+4. Click **Testar Ligação à API BueDoc** (Test Connection) to verify your credentials, active plan, remaining monthly quota, and reserved API series.
+5. Set your preferred automatic issuance trigger statuses, default VAT rates, and checkout NIF settings.
+6. Click **Save changes**.
 
 == Frequently Asked Questions ==
 
-= O que é necessário para utilizar o plugin? =
-É necessária uma loja WordPress com o plugin WooCommerce activo, e uma conta na plataforma BueDoc (https://doc.buegood.com) com um plano com acesso à API e a Chave Privada da AGT configurada.
+= What is required to use this plugin? =
+You need an active WordPress website running WooCommerce, and an account on the BueDoc platform (https://doc.buegood.com) with an API-enabled plan and your AGT private key configured.
 
-= Onde obtenho a minha Chave de API BueDoc? =
-No painel do BueDoc, aceda a **Definições da Conta / Empresa > Chaves de API** e crie uma nova chave para a sua loja.
+= Where do I get my BueDoc API Key? =
+In the BueDoc dashboard, go to **Company Settings > API Keys** and create a new key for your store.
 
-= Como funciona a validação do NIF no checkout? =
-Se a opção "Validação em Tempo Real" estiver activa, o plugin verifica se o NIF inserido pelo cliente corresponde a um contribuinte activo perante a AGT. Se o cliente não indicar NIF e o campo for opcional, o documento é emitido com o NIF convencional de Consumidor Final `999999999`.
+= How does checkout NIF validation work? =
+When "Real-Time Validation" is enabled, the plugin checks whether the NIF entered by the customer corresponds to an active taxpayer in the AGT database. If the customer leaves the field blank and it is optional, the document is issued to the statutory Final Consumer NIF `999999999`.
 
-= Posso emitir facturas manualmente? =
-Sim. Em qualquer encomenda no painel do WooCommerce, a Meta Box "Factura BueDoc" disponibiliza um botão para emitir o documento fiscal manualmente (escolhendo entre FR e FT), além de permitir emitir documentos em massa na lista de encomendas.
+= Can I issue invoices manually? =
+Yes. On any order details screen in WooCommerce, the "BueDoc Factura" Meta Box provides a button to issue the invoice manually (choosing between FR and FT), as well as a bulk issuance action on the orders list table.
 
-= O cliente tem acesso ao PDF da factura? =
-Sim. O PDF oficial gerado pela AGT/BueDoc é anexado automaticamente aos emails de encomenda concluída enviados ao cliente e fica disponível para descarga na área "A Minha Conta > Encomendas".
+= Can customers download the invoice PDF? =
+Yes. The official certified PDF is automatically attached to order completion emails sent to the customer and is accessible in their "My Account > Orders" section.
 
-= O plugin é compatível com o WooCommerce HPOS? =
-Sim. O plugin declara compatibilidade total com o High-Performance Order Storage (HPOS / Custom Order Tables) do WooCommerce.
+= Is this plugin compatible with WooCommerce HPOS? =
+Yes. The plugin declares full compatibility with WooCommerce High-Performance Order Storage (HPOS).
 
 == Screenshots ==
 
-1. Painel de configurações da integração BueDoc no WooCommerce.
-2. Teste de ligação à API com visualização de plano e quota mensal.
-3. Campo de NIF no checkout com validação de contribuinte em tempo real.
-4. Meta Box de detalhes fiscais, QR Code e descarga de PDF no ecrã da encomenda.
-5. Coluna de estado e número de documento na listagem de encomendas.
+1. BueDoc settings panel in WooCommerce.
+2. API connection test with active plan and quota display.
+3. Checkout NIF field with real-time AGT taxpayer validation.
+4. Order screen Meta Box with fiscal details, QR Code, and PDF download.
+5. Orders list column with document number and AGT status badge.
 
 == Changelog ==
 
 = 1.0.0 =
-* Lançamento inicial oficial.
-* Emissão automática de Facturas (FT) e Facturas-Recibo (FR) certificadas pela AGT.
-* Compatibilidade com séries exclusivas de API (`isApi: true`).
-* Campo NIF no checkout com validação em tempo real perante a AGT.
-* Suporte completo a todas as taxas de IVA e motivos de isenção AGT (M00 a M99).
-* Anexo automático de PDF em emails do WooCommerce e na área "A Minha Conta".
-* Emissão de Notas de Crédito (NC) para encomendas reembolsadas.
-* Compatibilidade nativa com High-Performance Order Storage (HPOS).
+* Official initial release.
+* Automated issuance of AGT-certified Invoices (FT) and Invoice-Receipts (FR).
+* Support for dedicated API series (`isApi: true`).
+* Checkout NIF field with real-time AGT taxpayer verification.
+* Support for all official VAT rates and AGT exemption codes (M00 through M99).
+* Automatic PDF attachment to WooCommerce emails and customer My Account download.
+* Credit Note (NC) issuance for refunded orders.
+* Full compatibility with High-Performance Order Storage (HPOS).
 
 == Upgrade Notice ==
 
 = 1.0.0 =
-Versão inicial de lançamento.
+Initial release.

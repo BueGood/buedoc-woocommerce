@@ -340,6 +340,7 @@ class BueDoc_Settings {
             [
                 'title'   => __('Registo de Logs (Debug)', 'buedoc-facturacao-electronica-agt'),
                 'desc'    => sprintf(
+                    /* translators: %s: HTML link to WooCommerce logs */
                     __('Registar comunicações da API no registo do WooCommerce (%s).', 'buedoc-facturacao-electronica-agt'),
                     '<a href="' . admin_url('admin.php?page=wc-status&tab=logs') . '" target="_blank">' . __('Ver Logs', 'buedoc-facturacao-electronica-agt') . '</a>'
                 ),

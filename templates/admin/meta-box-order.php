@@ -21,7 +21,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$order_id = $order->get_id();
+$buedoc_order_id = $order->get_id();
 ?>
 <div class="buedoc-meta-box">
 
@@ -88,13 +88,13 @@ $order_id = $order->get_id();
                 <?php esc_html_e('Descarregar PDF', 'buedoc-facturacao-electronica-agt'); ?>
             </a>
 
-            <button type="button" class="buedoc-btn buedoc-btn-secondary buedoc-refresh-agt-btn" data-order-id="<?php echo esc_attr($order_id); ?>">
+            <button type="button" class="buedoc-btn buedoc-btn-secondary buedoc-refresh-agt-btn" data-order-id="<?php echo esc_attr($buedoc_order_id); ?>">
                 <span class="dashicons dashicons-update" style="font-size: 16px; width: 16px; height: 16px;"></span>
                 <?php esc_html_e('Actualizar Estado AGT', 'buedoc-facturacao-electronica-agt'); ?>
             </button>
 
             <?php if ($has_refunds && empty($nc_number)) : ?>
-                <button type="button" class="buedoc-btn buedoc-btn-danger buedoc-issue-nc-btn" data-order-id="<?php echo esc_attr($order_id); ?>">
+                <button type="button" class="buedoc-btn buedoc-btn-danger buedoc-issue-nc-btn" data-order-id="<?php echo esc_attr($buedoc_order_id); ?>">
                     <span class="dashicons dashicons-undo" style="font-size: 16px; width: 16px; height: 16px;"></span>
                     <?php esc_html_e('Emitir Nota de Crédito (NC)', 'buedoc-facturacao-electronica-agt'); ?>
                 </button>
@@ -116,7 +116,7 @@ $order_id = $order->get_id();
                 <option value="FT"><?php esc_html_e('Factura (FT) — A prazo / pendente', 'buedoc-facturacao-electronica-agt'); ?></option>
             </select>
 
-            <button type="button" class="buedoc-btn buedoc-btn-primary buedoc-issue-manual-btn" data-order-id="<?php echo esc_attr($order_id); ?>" style="width: 100%;">
+            <button type="button" class="buedoc-btn buedoc-btn-primary buedoc-issue-manual-btn" data-order-id="<?php echo esc_attr($buedoc_order_id); ?>" style="width: 100%;">
                 <span class="dashicons dashicons-media-document" style="font-size: 16px; width: 16px; height: 16px;"></span>
                 <?php esc_html_e('Emitir Factura no BueDoc', 'buedoc-facturacao-electronica-agt'); ?>
             </button>

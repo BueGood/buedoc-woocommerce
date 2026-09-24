@@ -20,6 +20,7 @@ if (!defined('ABSPATH')) {
     <p style="margin: 0 0 12px 0; color: #475569; font-size: 14px; line-height: 1.5;">
         <?php
         printf(
+            /* translators: 1: document type (Factura or Factura-Recibo), 2: document number */
             esc_html__('A sua compra foi processada e a respectiva %1$s com o número %2$s encontra-se emitida em conformidade com as regras fiscais de Angola.', 'buedoc-facturacao-electronica-agt'),
             esc_html($doc_type === 'FR' ? 'Factura-Recibo' : 'Factura'),
             '<strong>' . esc_html($doc_number) . '</strong>'
