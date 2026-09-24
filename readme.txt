@@ -1,7 +1,7 @@
-=== BueDoc Facturação para E-Commerce ===
+=== BueDoc Facturação Electrónica AGT ===
 Contributors: ravelinodecastro, buegood, buegoodcompany
 Donate link: https://doc.buegood.com
-Tags: ecommerce, invoicing, agt, angola, billing, invoice, factura
+Tags: agt, angola, facturacao, facturacao-electronica, invoice, invoicing, billing, ecommerce
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
@@ -13,7 +13,7 @@ Emissão automática de facturas e facturas-recibo certificadas pela AGT em Ango
 
 == Description ==
 
-O **BueDoc Facturação para WooCommerce** é a solução oficial de integração para emissão automatizada de documentos fiscais certificados pela **AGT (Administração Geral Tributária de Angola)** em lojas WooCommerce.
+O **BueDoc Facturação Electrónica AGT** é a solução oficial de integração para emissão automatizada de documentos fiscais certificados pela **AGT (Administração Geral Tributária de Angola)** em lojas WooCommerce.
 
 Com este plugin, a sua loja emite facturas (**FT**) e facturas-recibo (**FR**) em total conformidade fiscal angolana, com numeração sequencial em série exclusiva para API, assinatura digital RSA-SHA1 em cadeia, códigos JWS RS256 e geração de QR Code fiscal oficial.
 

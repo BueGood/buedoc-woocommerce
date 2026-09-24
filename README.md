@@ -1,4 +1,4 @@
-# BueDoc Facturação para E-Commerce
+# BueDoc Facturação Electrónica AGT
 
 Plugin oficial de integração entre o **WooCommerce** e a plataforma **BueDoc** para emissão automatizada de facturas e facturas-recibo certificadas pela **AGT (Administração Geral Tributária de Angola)**.
 
