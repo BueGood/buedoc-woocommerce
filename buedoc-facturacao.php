@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       BueDoc Facturação para WooCommerce
+ * Plugin Name:       BueDoc Facturação para E-Commerce
  * Plugin URI:        https://doc.buegood.com
  * Description:       Emissão automática de facturas e facturas-recibo certificadas pela AGT em Angola através da API BueDoc.
  * Version:           1.0.0
@@ -8,7 +8,7 @@
  * Author URI:        https://buegood.com
  * License:           GPLv2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       buedoc-woocommerce
+ * Text Domain:       buedoc-facturacao
  * Domain Path:       /languages
  * Requires at least: 6.0
  * Tested up to:      6.7
@@ -124,8 +124,8 @@ class BueDoc_WooCommerce {
         ?>
         <div class="notice notice-error is-dismissible">
             <p>
-                <strong><?php esc_html_e('BueDoc Facturação para WooCommerce', 'buedoc-woocommerce'); ?>:</strong>
-                <?php esc_html_e('Este plugin necessita que o WooCommerce esteja instalado e activo.', 'buedoc-woocommerce'); ?>
+                <strong><?php esc_html_e('BueDoc Facturação para E-Commerce', 'buedoc-facturacao'); ?>:</strong>
+                <?php esc_html_e('Este plugin necessita que o WooCommerce esteja instalado e activo.', 'buedoc-facturacao'); ?>
             </p>
         </div>
         <?php

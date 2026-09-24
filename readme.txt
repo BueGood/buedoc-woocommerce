@@ -1,7 +1,7 @@
-=== BueDoc Facturação para WooCommerce ===
+=== BueDoc Facturação para E-Commerce ===
 Contributors: ravelinodecastro, buegood, buegoodcompany
 Donate link: https://doc.buegood.com
-Tags: woocommerce, invoicing, agt, angola, billing, invoice, factura
+Tags: ecommerce, invoicing, agt, angola, billing, invoice, factura
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 7.4
@@ -9,7 +9,7 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Emissão automática de facturas e facturas-recibo certificadas pela AGT em Angola através da API BueDoc para lojas WooCommerce.
+Emissão automática de facturas e facturas-recibo certificadas pela AGT em Angola através da API BueDoc para lojas online.
 
 == Description ==
 
