@@ -4,11 +4,14 @@
  * Plugin URI:        https://doc.buegood.com
  * Description:       Emissão automática de facturas e facturas-recibo certificadas pela AGT em Angola através da API BueDoc.
  * Version:           1.0.0
- * Author:            BueGood Tecnologias
+ * Author:            BueGood Tecnologias, ravelinodecastro
  * Author URI:        https://buegood.com
+ * License:           GPLv2 or later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       buedoc-woocommerce
  * Domain Path:       /languages
  * Requires at least: 6.0
+ * Tested up to:      6.7
  * Requires PHP:      7.4
  * WC requires at least: 8.0
  * WC tested up to:   9.5
