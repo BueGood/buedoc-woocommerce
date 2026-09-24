@@ -71,10 +71,14 @@ class BueDoc_Order_Manager {
         $existing_doc_id = $order->get_meta('_buedoc_document_id');
         if (!empty($existing_doc_id)) {
             $existing_number = $order->get_meta('_buedoc_document_number');
-            /* translators: 1: order ID, 2: existing document number */
             return [
                 'success' => false,
-                'error'   => sprintf(__('A encomenda #%1$d já possui documento emitido no BueDoc (%2$s).', 'buedoc-facturacao-electronica-agt'), $order_id, $existing_number),
+                'error'   => sprintf(
+                    /* translators: 1: order ID, 2: existing document number */
+                    __('A encomenda #%1$d já possui documento emitido no BueDoc (%2$s).', 'buedoc-facturacao-electronica-agt'),
+                    $order_id,
+                    $existing_number
+                ),
             ];
         }
 
@@ -207,8 +211,8 @@ class BueDoc_Order_Manager {
         $order->save();
 
         // 12. Adicionar nota explicativa na encomenda
-        /* translators: 1: document number, 2: AGT status, 3: gross total */
         $note = sprintf(
+            /* translators: 1: document number, 2: AGT status, 3: gross total */
             __('Documento fiscal BueDoc emitido com sucesso: %1$s (AGT Status: %2$s). Total: %3$s Kz.', 'buedoc-facturacao-electronica-agt'),
             $doc_data['number'],
             $doc_data['agtStatus'],
