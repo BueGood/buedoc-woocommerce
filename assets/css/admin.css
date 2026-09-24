@@ -1,0 +1,269 @@
+/**
+ * BueDoc Facturação para WooCommerce - Admin Styles
+ */
+
+.buedoc-header-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px 24px;
+    margin-bottom: 24px;
+}
+
+.buedoc-header-logo img {
+    height: 44px;
+    width: auto;
+    display: block;
+}
+
+.buedoc-header-badge {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.buedoc-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.buedoc-card-title {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Badges */
+.buedoc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.buedoc-badge-success,
+.buedoc-badge-COMMUNICATED,
+.buedoc-badge-ACCEPTED,
+.buedoc-badge-PAID {
+    background-color: #dcfce7;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+}
+
+.buedoc-badge-warning,
+.buedoc-badge-PENDING,
+.buedoc-badge-PENDING_TRANSMISSION,
+.buedoc-badge-TRANSMITTED {
+    background-color: #fef9c3;
+    color: #a16207;
+    border: 1px solid #fef08a;
+}
+
+.buedoc-badge-danger,
+.buedoc-badge-FAILED,
+.buedoc-badge-REJECTED,
+.buedoc-badge-CANCELLED {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+
+.buedoc-badge-info,
+.buedoc-badge-PROFORMA,
+.buedoc-badge-NOT_APPLICABLE {
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+}
+
+.buedoc-badge-doc-fr {
+    background-color: #e0e7ff;
+    color: #4338ca;
+    border: 1px solid #c7d2fe;
+}
+
+.buedoc-badge-doc-ft {
+    background-color: #ede9fe;
+    color: #6d28d9;
+    border: 1px solid #ddd6fe;
+}
+
+.buedoc-badge-doc-nc {
+    background-color: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+/* Order Meta Box */
+.buedoc-meta-box {
+    font-size: 13px;
+    color: #334155;
+}
+
+.buedoc-meta-box .buedoc-field-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.buedoc-meta-box .buedoc-field-row:last-child {
+    border-bottom: none;
+}
+
+.buedoc-meta-box .buedoc-label {
+    font-weight: 500;
+    color: #64748b;
+}
+
+.buedoc-meta-box .buedoc-value {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.buedoc-actions-row {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.buedoc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.15s ease-in-out;
+    border: 1px solid transparent;
+}
+
+.buedoc-btn-primary {
+    background: #2563eb;
+    color: #ffffff !important;
+    border-color: #2563eb;
+}
+
+.buedoc-btn-primary:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+.buedoc-btn-secondary {
+    background: #f8fafc;
+    color: #334155 !important;
+    border-color: #cbd5e1;
+}
+
+.buedoc-btn-secondary:hover {
+    background: #f1f5f9;
+    border-color: #94a3b8;
+}
+
+.buedoc-btn-danger {
+    background: #fff1f2;
+    color: #be123c !important;
+    border-color: #fecdd3;
+}
+
+.buedoc-btn-danger:hover {
+    background: #ffe4e6;
+    border-color: #fda4af;
+}
+
+.buedoc-btn:disabled,
+.buedoc-btn.is-loading {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Spinner */
+.buedoc-spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+    border-top-color: currentColor;
+    animation: buedoc-spin 0.6s linear infinite;
+}
+
+@keyframes buedoc-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* QR Code Section */
+.buedoc-qr-box {
+    margin-top: 14px;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 6px;
+    text-align: center;
+    border: 1px dashed #cbd5e1;
+}
+
+.buedoc-qr-box img {
+    max-width: 110px;
+    height: auto;
+    display: block;
+    margin: 0 auto 6px;
+    background: #ffffff;
+    padding: 4px;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+}
+
+.buedoc-qr-desc {
+    font-size: 11px;
+    color: #64748b;
+}
+
+/* Settings test connection box */
+.buedoc-connection-box {
+    margin-top: 12px;
+    padding: 14px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.buedoc-connection-box.is-success {
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    color: #166534;
+}
+
+.buedoc-connection-box.is-error {
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+    color: #991b1b;
+}

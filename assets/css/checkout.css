@@ -1,0 +1,69 @@
+/**
+ * BueDoc Facturação para WooCommerce - Checkout Styles
+ */
+
+#billing_nif_field {
+    position: relative;
+}
+
+#billing_nif_field .buedoc-nif-feedback {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+#billing_nif_field .buedoc-nif-feedback.is-valid {
+    color: #16a34a;
+}
+
+#billing_nif_field .buedoc-nif-feedback.is-invalid {
+    color: #dc2626;
+}
+
+#billing_nif_field .buedoc-nif-feedback.is-checking {
+    color: #4b5563;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#billing_nif_field .buedoc-mini-spinner {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    border-top-color: #2563eb;
+    animation: buedoc-spin 0.6s linear infinite;
+}
+
+@keyframes buedoc-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* My Account Invoice Section */
+.buedoc-myaccount-invoice-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.buedoc-myaccount-invoice-info h4 {
+    margin: 0 0 4px 0;
+    font-size: 15px;
+    color: #1e293b;
+}
+
+.buedoc-myaccount-invoice-info p {
+    margin: 0;
+    font-size: 13px;
+    color: #64748b;
+}
